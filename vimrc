@@ -1,5 +1,6 @@
+" Add to GIT
 " Usefull doc links
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Documentation Vim
 " Vim Tips Wiki
 " http://vim.wikia.com/wiki/Vim_Tips_Wiki
@@ -20,16 +21,16 @@
 " install python https://linuxconfig.org/how-to-change-default-python-version-on-debian-9-stretch-linux
 " examples of vimrc
 " https://github.com/victormours/dotfiles/blob/master/vim/vimrc
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 "
 " Basics
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " https://coderwall.com/p/sdhfug/vim-swap-backup-and-undo-files
 " https://stackoverflow.com/questions/5700389/using-vims-persistent-undo
 " Vim "undo", "backup", "swap" and "viminfo" files
 " mkdir -P $HOME/.vim/.undo $HOME/.vim/.backup $HOME/.vim/.swp
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " http://vim.wikia.com/wiki/Using_undo_branches
 " http://vimdoc.sourceforge.net/htmldoc/options.html#'undofile'
 set undofile                				" Save undos after file closes
@@ -53,27 +54,60 @@ set directory=$HOME/.vim/.swp// 			" directory to place swap files in
 " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 " http://vimdoc.sourceforge.net/htmldoc/options.html#'viminfo'
 set viminfo='50,<1000,s100,:0,n$HOME/.vim/.viminfo 	" Move viminfo to .vim directory
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Syntax
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " http://vimdoc.sourceforge.net/htmldoc/usr_06.html
 set syntax=enabled
 "set syntax=ON						" enable syntax, but not switch it on automatically when starting to edit
 set syntax=sh
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Other Configs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Config
 "
 "
 set number                      "Line numbers are good
+set scrolloff=20		"Keep 10 lines (top/bottom) for scope
+set sidescrolloff=10 		"Keep 5 lines at the size
+set showmatch			"show matching brackets
+
+" Mouse Setting
+"set ttyfast
+"set mouse=a
+"set ttymouse=xterm2
 "
 "
+"
+" Text Formating/Layout
+" Tabs
+set smarttab " Handle tabs more intelligently"
+set tabstop=4 " Number of spaces that a <Tab> in the file counts for
+set shiftwidth=4 " auto-indent amount when using cindent, >>, << and stuff like that
+set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
+set noexpandtab " In Insert mode use tabs, dont expand to number of spaces
+" Search and autocompletion
+set ignorecase " case insensitive by default
+set infercase " case inferred by default
+set smartcase " if there are caps, go case-sensitive
+" To display long lines as just one line
+" https://stackoverflow.com/questions/2280030/how-to-stop-line-breaking-in-vim
+set nowrap " do not wrap line
+" http://vim.1045645.n5.nabble.com/shiftround-option-td5712100.html
+"set cursorline
+highlight CursorLine term=bold cterm=bold guibg=Grey40
+"Hilfslinie erstellen damit Textefeld ncht länger als 80 Charakter wird
+let &colorcolumn=join(range(111,999),",")
+highlight ColorColumn ctermbg=LightGreen guibg=#2c2d27
+let &colorcolumn="111,".join(range(127,999),",")
+
+
+
 " Statusline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " deprecated by vim-airline Plugin 
 "set laststatus=2
@@ -98,11 +132,11 @@ set number                      "Line numbers are good
 "set statusline+=\ %p%%
 "set statusline+=\ %l:%c
 "set statusline+=\ 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 " Plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Plugin - vim-pathogen
 " manage your runtimepath
@@ -110,13 +144,13 @@ set number                      "Line numbers are good
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Plugin - vim-fugitive
 " Git wrapper
 " https://github.com/tpope/vim-fugitive
 "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Plugin - vim-airline
 " lean & mean status/tabline for vim
@@ -125,7 +159,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':p:~'
 let g:airline_detect_paste=1
 let g:airline_detect_modified=1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Plugin - vim-colors-solarized
 " precision colorscheme for the vim text editor
@@ -147,7 +181,7 @@ let g:solarized_hitrail = 0
 set background=dark
 colorscheme solarized
 call togglebg#map("<F5>")
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Automatically set paste mode in Vim when pasting in insert mode
 " https://coderwall.com/p/if9mda/automatically-set-paste-mode-in-vim-when-pasting-in-insert-mode
@@ -161,7 +195,7 @@ function! XTermPasteBegin()
         set paste
         return ""
 endfunction
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Plugin - vim-jinja
 " jinja plugins for vim (syntax and indent)
@@ -170,7 +204,7 @@ endfunction
 " Plugin - vim-ansible-yaml
 " Add additional support for Ansible in VIM
 " https://github.com/chase/vim-ansible-yaml
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Plugin - nerdtree
 " A tree explorer plugin for vim
@@ -190,12 +224,12 @@ let NERDTreeDirArrows = 1
 let g:vim_markdown_folding_disabled = 1
 let g:NERDTreeShowGitStatus = 1
 let g:NERDTreeUpdateOnWrite = 1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " vim-do not able to install
 " nerdtree-git-plugin also not able to install
 "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Plugin - nerdtree-git-plugin
 " A plugin of NERDTree showing git status
@@ -220,13 +254,13 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 "```
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Plugin - vim-gitgutter
 " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks.
 " https://github.com/airblade/vim-gitgutter
 let g:gitgutter_max_signs = 500  " default value
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Plugin - Vim-Plug
 " not installed because mainly using pathogen
@@ -242,7 +276,7 @@ let g:gitgutter_max_signs = 500  " default value
 "Plug 'https://github.com/vim-scripts/writebackupAutomator.git'
 " Initialize plugin system
 "call plug#end()
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Plugin - writebackup
 " Write backups of current file with date file extension
@@ -261,4 +295,4 @@ function IfWriteBackup() " Backup mittels plugin WriteBackup auf Anfrage sichern
        endif
 endfunction
 autocmd BufReadPost * call IfWriteBackup() " call WriteBackup on open of existing file
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
