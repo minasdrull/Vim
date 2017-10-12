@@ -1,4 +1,3 @@
-" Add to GIT
 " Usefull doc links
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Documentation Vim
@@ -33,27 +32,27 @@ set nocompatible
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " http://vim.wikia.com/wiki/Using_undo_branches
 " http://vimdoc.sourceforge.net/htmldoc/options.html#'undofile'
-set undofile                				" Save undos after file closes
+set undofile		" Save undos after file closes
 " http://vimdoc.sourceforge.net/htmldoc/options.html#'undodir'
-set undodir=$HOME/.vim/.undo// 				" where to save undo histories
+set undodir=$HOME/.vim/.undo//		" where to save undo histories
 " http://vimdoc.sourceforge.net/htmldoc/options.html#'undolevels'
-set undolevels=1000         				" How many undos
+set undolevels=1000		" How many undos
 " http://vimdoc.sourceforge.net/htmldoc/options.html#'undoreload'
-set undoreload=10000        				" number of lines to save for undo
+set undoreload=10000		" number of lines to save for undo
 " http://vim.wikia.com/wiki/Remove_swap_and_backup_files_from_your_working_directory
 " http://vimdoc.sourceforge.net/htmldoc/options.html#'nobackup'
 "set nobackup
 " http://vimdoc.sourceforge.net/htmldoc/options.html#'backupdir'
-"set backupdir=$HOME/.vim/.backup// 			" where to put backup files
+"set backupdir=$HOME/.vim/.backup//			" where to put backup files
 " http://vimdoc.sourceforge.net/htmldoc/options.html#'backupext'
-"set backupext=.bak 					" backup file extencion
+"set backupext=.bak			" backup file extencion
 " http://vimdoc.sourceforge.net/htmldoc/options.html#'noswapfile'
 "set noswapfile
 " http://vimdoc.sourceforge.net/htmldoc/options.html#'directory'
-set directory=$HOME/.vim/.swp// 			" directory to place swap files in
+set directory=$HOME/.vim/.swp//			" directory to place swap files in
 " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 " http://vimdoc.sourceforge.net/htmldoc/options.html#'viminfo'
-set viminfo='50,<1000,s100,:0,n$HOME/.vim/.viminfo 	" Move viminfo to .vim directory
+set viminfo='50,<1000,s100,:0,n$HOME/.vim/.viminfo		" Move viminfo to .vim directory
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Syntax
@@ -61,7 +60,7 @@ set viminfo='50,<1000,s100,:0,n$HOME/.vim/.viminfo 	" Move viminfo to .vim direc
 "
 " http://vimdoc.sourceforge.net/htmldoc/usr_06.html
 set syntax=enabled
-"set syntax=ON						" enable syntax, but not switch it on automatically when starting to edit
+"set syntax=ON		" enable syntax, but not switch it on automatically when starting to edit
 set syntax=sh
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
@@ -71,9 +70,10 @@ set syntax=sh
 "
 "
 set number                      "Line numbers are good
+"set list
 set scrolloff=20		"Keep 10 lines (top/bottom) for scope
-set sidescrolloff=10 		"Keep 5 lines at the size
-set showmatch			"show matching brackets
+set sidescrolloff=10		"Keep 5 lines at the size
+set showmatch		"show matching brackets
 
 " Mouse Setting
 "set ttyfast
@@ -84,22 +84,22 @@ set showmatch			"show matching brackets
 "
 " Text Formating/Layout
 " Tabs
-set smarttab " Handle tabs more intelligently"
-set tabstop=4 " Number of spaces that a <Tab> in the file counts for
-set shiftwidth=4 " auto-indent amount when using cindent, >>, << and stuff like that
-set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
-set noexpandtab " In Insert mode use tabs, dont expand to number of spaces
+set smarttab	" Handle tabs more intelligently"
+set tabstop=4	" Number of spaces that a <Tab> in the file counts for
+set shiftwidth=4	" auto-indent amount when using cindent, >>, << and stuff like that
+set shiftround	" when at 3 spaces, and I hit > ... go to 4, not 5
+set noexpandtab	" In Insert mode use tabs, dont expand to number of spaces
 " Search and autocompletion
-set ignorecase " case insensitive by default
-set infercase " case inferred by default
-set smartcase " if there are caps, go case-sensitive
+set ignorecase	" case insensitive by default
+set infercase	" case inferred by default
+set smartcase	" if there are caps, go case-sensitive
 " To display long lines as just one line
 " https://stackoverflow.com/questions/2280030/how-to-stop-line-breaking-in-vim
 set nowrap " do not wrap line
 " http://vim.1045645.n5.nabble.com/shiftround-option-td5712100.html
 "set cursorline
 highlight CursorLine term=bold cterm=bold guibg=Grey40
-"Hilfslinie erstellen damit Textefeld ncht länger als 80 Charakter wird
+" Hilfslinie erstellen damit Textefeld ncht länger als 80 Charakter wird
 let &colorcolumn=join(range(111,999),",")
 highlight ColorColumn ctermbg=LightGreen guibg=#2c2d27
 let &colorcolumn="111,".join(range(127,999),",")
@@ -241,25 +241,25 @@ let g:NERDTreeUpdateOnWrite = 1
 " +    let l:statusesStr = system('cd "' . l:root . '" ; ' . l:gitcmd)
 "
 "```vimscript
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
+"let g:NERDTreeIndicatorMapCustom = {
+"    \ "Modified"  : "✹",
+"    \ "Staged"    : "✚",
+"    \ "Untracked" : "✭",
+"    \ "Renamed"   : "➜",
+"    \ "Unmerged"  : "═",
+"    \ "Deleted"   : "✖",
+"    \ "Dirty"     : "✗",
+"    \ "Clean"     : "✔︎",
+"    \ 'Ignored'   : '☒',
+"    \ "Unknown"   : "?"
+"    \ }
 "```
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Plugin - vim-gitgutter
 " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks.
 " https://github.com/airblade/vim-gitgutter
-let g:gitgutter_max_signs = 500  " default value
+let g:gitgutter_max_signs = 500		" default value
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Plugin - Vim-Plug
@@ -284,8 +284,8 @@ let g:gitgutter_max_signs = 500  " default value
 " Plugin - ingo-library (dependency)
 " Vimscript library of common functions
 " http://www.vim.org/scripts/script.php?script_id=4433
-let g:WriteBackup_BackupDir = "~/.vim/.backup" " Festlegung des Backupverzeichnis
-function IfWriteBackup() " Backup mittels plugin WriteBackup auf Anfrage sichern
+let g:WriteBackup_BackupDir = "~/.vim/.backup"		" Festlegung des Backupverzeichnis
+function IfWriteBackup()		" Backup mittels plugin WriteBackup auf Anfrage sichern
        let choice = confirm("Execute WriteBackup cmd?", "&yes\n&no")
        if choice == 1
        silent! WriteBackup
@@ -294,5 +294,5 @@ function IfWriteBackup() " Backup mittels plugin WriteBackup auf Anfrage sichern
        echo "Valid inputs are: y/n!"
        endif
 endfunction
-autocmd BufReadPost * call IfWriteBackup() " call WriteBackup on open of existing file
+autocmd BufReadPost * call IfWriteBackup()		" call WriteBackup on open of existing file
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
